@@ -1,0 +1,2 @@
+android4.4属性
+android:fitsSystemWindows   内容是占满整个屏幕高度的，状态栏显示为透明的
