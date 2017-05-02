@@ -16,9 +16,10 @@ import com.wangby.www.lfsys_android.Tool.SqlTool;
 import java.util.ArrayList;
 
 /**
- * Created by 王炳炎 on 2017/4/24.
+ * Created by 王炳炎 on 2017/5/2.
  */
-public class ContentFragment extends Fragment {
+
+public class GoodsFrament extends Fragment {
 
 
     private static final String EXTRA_CONTENT = "content";
@@ -27,12 +28,12 @@ public class ContentFragment extends Fragment {
     ArrayList<Goods> goodsList;
     SqlTool sqlTool;
     Context mContext;
-    public static ContentFragment newInstance(String content){
+    public static GoodsFrament getFramet(String content){
         Bundle arguments = new Bundle();
         arguments.putString(EXTRA_CONTENT, content);
-        ContentFragment tabContentFragment = new ContentFragment();
-        tabContentFragment.setArguments(arguments);
-        return tabContentFragment;
+        GoodsFrament tabFragment = new GoodsFrament();
+        tabFragment.setArguments(arguments);
+        return tabFragment;
     }
 
     @Nullable
@@ -49,6 +50,10 @@ public class ContentFragment extends Fragment {
 
         return contentView;
     }
+
+
+
+
 
 
 

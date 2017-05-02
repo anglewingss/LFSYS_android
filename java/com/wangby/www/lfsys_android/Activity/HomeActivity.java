@@ -14,8 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.wangby.www.lfsys_android.View.ContentFragment;
 import com.wangby.www.lfsys_android.R;
+import com.wangby.www.lfsys_android.View.GoodsFrament;
+import com.wangby.www.lfsys_android.View.IssueFrament;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     //滑动内容窗口命名串
     private List<String> tabString;
     //内容布局
-    private List<ContentFragment> tabFragments;
+    private List<Fragment> tabFragments;
     //内容配置器
     private ContentPagerAdapter contentAdapter;
     //顶框
@@ -86,9 +87,11 @@ public class HomeActivity extends AppCompatActivity {
         tabString.add("信息");
         tabString.add("个人");
         tabFragments = new ArrayList<>();
-        for (String s : tabString) {
-            tabFragments.add(ContentFragment.newInstance(s));
-        }
+        tabFragments.add(GoodsFrament.getFramet("失物"));
+        tabFragments.add(GoodsFrament.getFramet("招领"));
+        tabFragments.add(IssueFrament.getFramet("发布"));
+        tabFragments.add(GoodsFrament.getFramet("信息"));
+        tabFragments.add(GoodsFrament.getFramet("个人"));
         contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
         mContentVp.setAdapter(contentAdapter);
 
