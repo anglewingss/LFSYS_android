@@ -14,32 +14,35 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.wangby.www.lfsys_android.Fragment.ContentFragment;
+import com.wangby.www.lfsys_android.View.ContentFragment;
 import com.wangby.www.lfsys_android.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.wangby.www.lfsys_android.R.id.topp;
-
 /**
  * Created by 王炳炎 on 2017/4/26.
  */
 public class HomeActivity extends AppCompatActivity {
-
+    //下框栏
     private TabLayout mTabTl;
+    //滑动内容窗口
     private ViewPager mContentVp;
-
-    private List<String> tabString ;
+    //滑动内容窗口命名串
+    private List<String> tabString;
+    //内容布局
     private List<ContentFragment> tabFragments;
+    //内容配置器
     private ContentPagerAdapter contentAdapter;
+    //顶框
     Toolbar toolbar;
     String[] str = new String[]{"失物求助","拾物招领","物品发布","信息","个人中心"};
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        toolbar = (Toolbar) findViewById(topp);
+        //加载顶框
+        toolbar = (Toolbar) findViewById(R.id.topp);
         setSupportActionBar(toolbar);
 
         mTabTl = (TabLayout) findViewById(R.id.tl_tab);

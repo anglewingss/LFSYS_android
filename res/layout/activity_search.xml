@@ -38,8 +38,7 @@
             android:textColor="@color/color_white"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/search_delete" />
+            android:layout_alignParentEnd="true" />
 
 
 
@@ -48,7 +47,7 @@
                 android:layout_gravity="center"
                 android:drawableLeft="@drawable/search_av"
                 android:drawablePadding="5dp"
-                android:layout_width="290dp"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/search_edittext_shape"
                 android:textSize="16sp"
@@ -57,19 +56,7 @@
                 android:hint="请输入关键字"
                 android:layout_weight="0.56"
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/search_button" />
-
-        <ImageView
-            android:visibility="gone"
-            android:layout_gravity="center"
-            android:src="@drawable/iv_delete_bg"
-            android:id="@+id/search_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/search_input"
-            android:layout_alignRight="@+id/search_input"
-            android:layout_alignEnd="@+id/search_input"
-            android:layout_alignTop="@+id/search_input" />
+            android:layout_toRightOf="@+id/search_back" />
     </RelativeLayout>
 
     <ListView
