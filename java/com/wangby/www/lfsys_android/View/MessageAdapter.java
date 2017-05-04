@@ -5,25 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wangby.www.lfsys_android.Object.Issue;
+import com.wangby.www.lfsys_android.Object.MessageUse;
 import com.wangby.www.lfsys_android.R;
 
 import java.util.ArrayList;
 
 /**
- * Created by 王炳炎 on 2017/5/2.
+ * Created by 王炳炎 on 2017/5/4.
  */
-public class IssueAdapter extends BaseAdapter {
+public class MessageAdapter extends BaseAdapter {
 
-    private ArrayList<Issue> list;
-    private Context context;
-
-    public IssueAdapter(Context mContext, ArrayList<Issue> issuesList) {
-        this.list = issuesList;
+    Context context;
+    ArrayList<MessageUse> list = null;
+    public MessageAdapter(Context mContext, ArrayList<MessageUse> messlist) {
         this.context = mContext;
+        this.list = messlist;
     }
 
     @Override
@@ -48,15 +46,14 @@ public class IssueAdapter extends BaseAdapter {
             view = convertView;
         }else {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.lssue_list, null);
+            view = layoutInflater.inflate(R.layout.message_list, null);
         }
-        ImageView img = (ImageView) view.findViewById(R.id.image_issue);
-        TextView textView = (TextView) view.findViewById(R.id.textView_issue);
-        Issue issue = list.get(position);
-        textView.setText(issue.title);
-        img.setImageDrawable(issue.drawable);
-
-
+        MessageUse messageUse = list.get(position);
+        TextView name = (TextView) view.findViewById(R.id.textView_message_name);
+        TextView conent = (TextView) view.findViewById(R.id.textView_message_content);
+        name.setText(messageUse.name);
+        conent.setText(messageUse.talk.get(messageUse.talk.size()-1));
         return view;
     }
+
 }

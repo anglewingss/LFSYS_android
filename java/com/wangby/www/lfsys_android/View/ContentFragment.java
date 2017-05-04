@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.wangby.www.lfsys_android.Object.Goods;
+import com.wangby.www.lfsys_android.Object.Issue;
+import com.wangby.www.lfsys_android.Object.MessageUse;
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.Tool.SqlTool;
 
@@ -20,13 +22,13 @@ import java.util.ArrayList;
  */
 public class ContentFragment extends Fragment {
 
-
     ListView listView;
     ArrayList<Goods> goodsList;
     SqlTool sqlTool;
     Context mContext;
-    public static ContentFragment newInstance(String content){
+    public static ContentFragment getFragment(String type){
         Bundle arguments = new Bundle();
+        arguments.putString("TYPE", type);//放入map
         ContentFragment tabContentFragment = new ContentFragment();
         tabContentFragment.setArguments(arguments);
         return tabContentFragment;
@@ -38,9 +40,40 @@ public class ContentFragment extends Fragment {
         View contentView = inflater.inflate(R.layout.fragment_content, null);
         mContext = getActivity();
         listView = (ListView) contentView.findViewById(R.id.listview);
-        goodsList = SqlTool.getTextGoods();
-        listView.setAdapter(new GoodsAdapter(mContext, goodsList));
+        inilistview(getArguments().getString("TYPE"));
+
         return contentView;
+    }
+
+    private void inilistview(String type) {
+        switch(type){
+            case "goods_lost":
+                listView.setAdapter(new GoodsAdapter(mContext, SqlTool.getTextGoods()));
+                break;
+            case "goods_found":
+                listView.setAdapter(new GoodsAdapter(mContext, SqlTool.getTextGoods()));
+                break;
+            case "issue":
+                ArrayList<Issue> lssueList = new ArrayList<Issue>();
+                lssueList.add(new Issue(mContext.getResources().getDrawable(R.drawable.myself),"我的发布"));
+                lssueList.add(new Issue(mContext.getResources().getDrawable(R.drawable.lost_title),"失物发布"));
+                lssueList.add(new Issue(mContext.getResources().getDrawable(R.drawable.found_title),"拾物发布"));
+                listView.setAdapter(new IssueAdapter(mContext, lssueList));
+                break;
+            case "message":
+                ArrayList<MessageUse> messlist = new ArrayList<MessageUse>();
+                for(int i = 0; i<4;i++){
+                    MessageUse ad = new MessageUse();
+                    ad.name="小明";
+                    ad.talk.add("你好");
+                    ad.talk.add("hai");
+                    messlist.add(ad);
+                }
+                listView.setAdapter(new MessageAdapter(mContext,messlist));
+                break;
+
+        }
+
     }
 
 }

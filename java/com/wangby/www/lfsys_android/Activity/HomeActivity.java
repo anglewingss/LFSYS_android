@@ -15,8 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.wangby.www.lfsys_android.R;
-import com.wangby.www.lfsys_android.View.GoodsFragment;
-import com.wangby.www.lfsys_android.View.IssueFragment;
+import com.wangby.www.lfsys_android.View.ContentFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +28,6 @@ public class HomeActivity extends AppCompatActivity {
     private TabLayout mTabTl;
     //滑动内容窗口
     private ViewPager mContentVp;
-    //滑动内容窗口命名串
-    private List<String> tabString;
     //内容布局
     private List<Fragment> tabFragments;
     //内容配置器
@@ -38,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
     //顶框
     Toolbar toolbar;
     String[] str = new String[]{"失物求助","拾物招领","物品发布","信息","个人中心"};
+    //下栏名字
+    String[] strdown = new String[]{"失物","拾物","发布","信息","个人"};
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,18 +79,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initContent() {
-        tabString = new ArrayList<>();
-        tabString.add("失物");
-        tabString.add("招领");
-        tabString.add("发布");
-        tabString.add("信息");
-        tabString.add("个人");
         tabFragments = new ArrayList<>();
-        tabFragments.add(GoodsFragment.getFramet("失物"));
-        tabFragments.add(GoodsFragment.getFramet("招领"));
-        tabFragments.add(IssueFragment.getFramet("发布"));
-        tabFragments.add(GoodsFragment.getFramet("信息"));
-        tabFragments.add(GoodsFragment.getFramet("个人"));
+        tabFragments.add(ContentFragment.getFragment("goods_lost"));
+        tabFragments.add(ContentFragment.getFragment("goods_found"));
+        tabFragments.add(ContentFragment.getFragment("issue"));
+        tabFragments.add(ContentFragment.getFragment("message"));
+        tabFragments.add(ContentFragment.getFragment("goods_lost"));
         contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
         mContentVp.setAdapter(contentAdapter);
 
@@ -136,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
 
-            return tabString.get(position);
+            return strdown[position];
         }
     }
 
