@@ -15,8 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.wangby.www.lfsys_android.R;
-import com.wangby.www.lfsys_android.View.GoodsFrament;
-import com.wangby.www.lfsys_android.View.IssueFrament;
+import com.wangby.www.lfsys_android.View.GoodsFragment;
+import com.wangby.www.lfsys_android.View.IssueFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,11 +87,11 @@ public class HomeActivity extends AppCompatActivity {
         tabString.add("信息");
         tabString.add("个人");
         tabFragments = new ArrayList<>();
-        tabFragments.add(GoodsFrament.getFramet("失物"));
-        tabFragments.add(GoodsFrament.getFramet("招领"));
-        tabFragments.add(IssueFrament.getFramet("发布"));
-        tabFragments.add(GoodsFrament.getFramet("信息"));
-        tabFragments.add(GoodsFrament.getFramet("个人"));
+        tabFragments.add(GoodsFragment.getFramet("失物"));
+        tabFragments.add(GoodsFragment.getFramet("招领"));
+        tabFragments.add(IssueFragment.getFramet("发布"));
+        tabFragments.add(GoodsFragment.getFramet("信息"));
+        tabFragments.add(GoodsFragment.getFramet("个人"));
         contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
         mContentVp.setAdapter(contentAdapter);
 
@@ -130,7 +130,7 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return tabString.size();
+            return tabFragments.size();
         }
 
         @Override

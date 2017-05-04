@@ -21,15 +21,12 @@ import java.util.ArrayList;
 public class ContentFragment extends Fragment {
 
 
-    private static final String EXTRA_CONTENT = "content";
-
     ListView listView;
     ArrayList<Goods> goodsList;
     SqlTool sqlTool;
     Context mContext;
     public static ContentFragment newInstance(String content){
         Bundle arguments = new Bundle();
-        arguments.putString(EXTRA_CONTENT, content);
         ContentFragment tabContentFragment = new ContentFragment();
         tabContentFragment.setArguments(arguments);
         return tabContentFragment;
@@ -39,19 +36,11 @@ public class ContentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View contentView = inflater.inflate(R.layout.fragment_content, null);
-//        String s = getArguments().getString(EXTRA_CONTENT);
         mContext = getActivity();
         listView = (ListView) contentView.findViewById(R.id.listview);
         goodsList = SqlTool.getTextGoods();
-
         listView.setAdapter(new GoodsAdapter(mContext, goodsList));
-
-
         return contentView;
     }
-
-
-
-
 
 }

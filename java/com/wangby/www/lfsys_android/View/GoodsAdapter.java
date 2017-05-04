@@ -47,7 +47,6 @@ public class GoodsAdapter extends BaseAdapter {
 		}else {
 			LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			view = layoutInflater.inflate(R.layout.goods_list, null);
-			
 		}
 		ImgTool img = (ImgTool) view.findViewById(R.id.imageView);
 		TextView textView = (TextView) view.findViewById(R.id.textView);
