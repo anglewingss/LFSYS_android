@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.wangby.www.lfsys_android.Object.Goods;
-import com.wangby.www.lfsys_android.Object.Issue;
 import com.wangby.www.lfsys_android.Object.MessageUse;
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.Tool.SqlTool;
@@ -54,13 +53,10 @@ public class ContentFragment extends Fragment {
                 listView.setAdapter(new GoodsAdapter(mContext, SqlTool.getTextGoods()));
                 break;
             case "issue":
-                ArrayList<Issue> lssueList = new ArrayList<Issue>();
-                lssueList.add(new Issue(mContext.getResources().getDrawable(R.drawable.myself),"我的发布"));
-                lssueList.add(new Issue(mContext.getResources().getDrawable(R.drawable.lost_title),"失物发布"));
-                lssueList.add(new Issue(mContext.getResources().getDrawable(R.drawable.found_title),"拾物发布"));
-                listView.setAdapter(new IssueAdapter(mContext, lssueList));
+                listView.setAdapter(new IssueAdapter(mContext));
                 break;
             case "message":
+                //通过Sql获取信息
                 ArrayList<MessageUse> messlist = new ArrayList<MessageUse>();
                 for(int i = 0; i<4;i++){
                     MessageUse ad = new MessageUse();
@@ -70,6 +66,9 @@ public class ContentFragment extends Fragment {
                     messlist.add(ad);
                 }
                 listView.setAdapter(new MessageAdapter(mContext,messlist));
+                break;
+            case "personal":
+                listView.setAdapter(new PersonalAdapter(mContext));
                 break;
 
         }

@@ -17,10 +17,10 @@ import java.util.ArrayList;
  */
 public class MessageAdapter extends BaseAdapter {
 
-    Context context;
+    Context mContext;
     ArrayList<MessageUse> list = null;
     public MessageAdapter(Context mContext, ArrayList<MessageUse> messlist) {
-        this.context = mContext;
+        this.mContext = mContext;
         this.list = messlist;
     }
 
@@ -45,7 +45,7 @@ public class MessageAdapter extends BaseAdapter {
         if(convertView != null){
             view = convertView;
         }else {
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.message_list, null);
         }
         MessageUse messageUse = list.get(position);

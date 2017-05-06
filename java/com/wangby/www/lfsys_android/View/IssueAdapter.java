@@ -18,12 +18,15 @@ import java.util.ArrayList;
  */
 public class IssueAdapter extends BaseAdapter {
 
-    private ArrayList<Issue> list;
-    private Context context;
+    private ArrayList<Issue> list = new ArrayList<Issue>();
 
-    public IssueAdapter(Context mContext, ArrayList<Issue> issuesList) {
-        this.list = issuesList;
-        this.context = mContext;
+    private Context mContext;
+
+    public IssueAdapter(Context mContext) {
+        this.mContext = mContext;
+        list.add(new Issue(mContext.getResources().getDrawable(R.drawable.myself),"我的发布"));
+        list.add(new Issue(mContext.getResources().getDrawable(R.drawable.lost_title),"失物发布"));
+        list.add(new Issue(mContext.getResources().getDrawable(R.drawable.found_title),"拾物发布"));
     }
 
     @Override
@@ -47,7 +50,7 @@ public class IssueAdapter extends BaseAdapter {
         if(convertView != null){
             view = convertView;
         }else {
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.lssue_list, null);
         }
         ImageView img = (ImageView) view.findViewById(R.id.image_issue);

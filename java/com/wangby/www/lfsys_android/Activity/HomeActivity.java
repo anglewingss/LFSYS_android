@@ -84,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
         tabFragments.add(ContentFragment.getFragment("goods_found"));
         tabFragments.add(ContentFragment.getFragment("issue"));
         tabFragments.add(ContentFragment.getFragment("message"));
-        tabFragments.add(ContentFragment.getFragment("goods_lost"));
+        tabFragments.add(ContentFragment.getFragment("personal"));
         contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
         mContentVp.setAdapter(contentAdapter);
 

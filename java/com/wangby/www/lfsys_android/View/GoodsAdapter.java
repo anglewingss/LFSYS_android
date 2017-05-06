@@ -16,12 +16,12 @@ import java.util.ArrayList;
 public class GoodsAdapter extends BaseAdapter {
 	
 	private ArrayList<Goods> list;
-	private Context context;
+	private Context mContext;
 
 	//通过构造方法接受要显示的新闻数据集合
 	public GoodsAdapter(Context context,ArrayList<Goods> list){
 		this.list = list;
-		this.context = context;
+		this.mContext = context;
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class GoodsAdapter extends BaseAdapter {
 		if(convertView != null){
 			view = convertView;
 		}else {
-			LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			view = layoutInflater.inflate(R.layout.goods_list, null);
 		}
 		ImgTool img = (ImgTool) view.findViewById(R.id.imageView);
