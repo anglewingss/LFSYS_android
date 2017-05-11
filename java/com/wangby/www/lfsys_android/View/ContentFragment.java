@@ -67,10 +67,6 @@ public class ContentFragment extends Fragment {
                 }
                 listView.setAdapter(new MessageAdapter(mContext,messlist));
                 break;
-            case "personal":
-                listView.setAdapter(new PersonalAdapter(mContext));
-                break;
-
         }
 
     }

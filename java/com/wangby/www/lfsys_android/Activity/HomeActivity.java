@@ -13,9 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.View.ContentFragment;
+import com.wangby.www.lfsys_android.View.PersonalFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +36,9 @@ public class HomeActivity extends AppCompatActivity {
     private ContentPagerAdapter contentAdapter;
     //顶框
     Toolbar toolbar;
-    String[] str = new String[]{"失物求助","拾物招领","物品发布","信息","个人中心"};
+    String[] str = new String[]{"失物求助", "拾物招领", "物品发布", "信息", "个人中心"};
     //下栏名字
-    String[] strdown = new String[]{"失物","拾物","发布","信息","个人"};
+    String[] strdown = new String[]{"失物", "拾物", "发布", "信息", "个人"};
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,14 +49,26 @@ public class HomeActivity extends AppCompatActivity {
 
         mTabTl = (TabLayout) findViewById(R.id.tl_tab);
         mContentVp = (ViewPager) findViewById(R.id.vp_content);
-
         initContent();
 
         initTab();
 
     }
 
-    private void initTab(){
+    /**
+     * 登陆事件
+     * @param v
+     */
+    public void imageview(View v){
+        startActivity(new Intent(this, LoginActivity.class));
+
+    }
+
+
+    /**
+     * 配置下边框
+     */
+    private void initTab() {
         mTabTl.setTabMode(TabLayout.MODE_SCROLLABLE);
         mTabTl.setTabTextColors(ContextCompat.getColor(this, R.color.gray), ContextCompat.getColor(this, R.color.blue));
         mTabTl.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.white));
@@ -63,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         mTabTl.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                toolbar.setTitle(str[ tab.getPosition()]);
+                toolbar.setTitle(str[tab.getPosition()]);
             }
 
             @Override
@@ -78,22 +92,26 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+
+
+    /**
+     * 配置Fragment界面
+     */
     private void initContent() {
         tabFragments = new ArrayList<>();
         tabFragments.add(ContentFragment.getFragment("goods_lost"));
         tabFragments.add(ContentFragment.getFragment("goods_found"));
         tabFragments.add(ContentFragment.getFragment("issue"));
         tabFragments.add(ContentFragment.getFragment("message"));
-        tabFragments.add(ContentFragment.getFragment("personal"));
+        tabFragments.add(PersonalFragment.getFragment());
         contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
         mContentVp.setAdapter(contentAdapter);
 
     }
 
 
-
     /**
-     * 顶栏
+     * 顶栏添加
      * @param menu
      * @return
      */
@@ -102,14 +120,20 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * 顶栏事件
+     * @param item
+     * @return
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         startActivity(new Intent(this, SearchActivity.class));
         return super.onOptionsItemSelected(item);
     }
 
 
-
-
+    /**
+     * Fragment界面  资源配置器
+     */
     class ContentPagerAdapter extends FragmentPagerAdapter {
 
         public ContentPagerAdapter(FragmentManager fm) {

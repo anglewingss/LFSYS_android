@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.wangby.www.lfsys_android.Object.Goods;
-import com.wangby.www.lfsys_android.Object.User;
+import com.wangby.www.lfsys_android.connect.User;
 
 import java.util.ArrayList;
 
@@ -27,8 +27,11 @@ public class SqlTool {
     public void saveUser(User user){
         SQLiteDatabase db = sqlMode.getReadableDatabase();
         ContentValues values = new ContentValues();
-        values.put("name",user.name);
-        values.put("password",user.password);
+        values.put("stuNum",user.getStuNum());
+        values.put("password",user.getPassword());
+        values.put("name",user.getName());
+        values.put("phone",user.getPhone());
+        values.put("oredit",user.getOredit());
         db.insert("user",null,values);
         db.close();
     }
@@ -57,8 +60,8 @@ public class SqlTool {
         Cursor c = db.rawQuery(sql, null);
         if (c != null && c.getCount() > 0) {
             while (c.moveToNext()) {
-                user.name = c.getString(0);
-                user.password = c.getString(1);
+//                user.name = c.getString(0);
+//                user.password = c.getString(1);
             }
             db.close();
             c.close();
