@@ -7,19 +7,19 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.wangby.www.lfsys_android.Object.Goods;
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.Tool.ImgTool;
+import com.wangby.www.lfsys_android.connect.Post;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class GoodsAdapter extends BaseAdapter {
 	
-	private ArrayList<Goods> list;
+	private List<Post> list;
 	private Context mContext;
 
 	//通过构造方法接受要显示的新闻数据集合
-	public GoodsAdapter(Context context,ArrayList<Goods> list){
+	public GoodsAdapter(Context context,List<Post> list){
 		this.list = list;
 		this.mContext = context;
 	}
@@ -51,11 +51,12 @@ public class GoodsAdapter extends BaseAdapter {
 		ImgTool img = (ImgTool) view.findViewById(R.id.imageView);
 		TextView textView = (TextView) view.findViewById(R.id.textView);
 		TextView textView1 = (TextView) view.findViewById(R.id.textView2);
-		Goods dataMode = list.get(position);
-		textView1.setText(dataMode.Gname);
-		textView.setText("地点："+dataMode.place+"\n时间："+dataMode.time+"\n"+dataMode.Uname+dataMode.Uid);
+		Post dataMode = list.get(position);
+		textView1.setText(dataMode.getGoodsName());
+		textView.setText("地点："+dataMode.getPlace()+"\n时间："+dataMode.getTime()+"\n"+dataMode.getStuNum());
 //		img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(), R.drawable.nullimg, null));
-		img.setImageUrl(dataMode.Gimg);
+//		img.setImageUrl(dataMode.getPhoto());
+
 		return view;
 	}
 

@@ -5,12 +5,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.Tool.SqlTool;
 import com.wangby.www.lfsys_android.connect.Function;
@@ -39,7 +41,6 @@ public class LoginActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
 
         ini();
@@ -65,6 +66,9 @@ public class LoginActivity extends Activity{
         name =(AutoCompleteTextView) findViewById(R.id.name);
         textView = (TextView) findViewById(R.id.textView2);
         context=this;
+        sqlTool = new SqlTool(this);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+        name.setAdapter(adapter);
     }
 
     public void login(View v){
@@ -75,15 +79,18 @@ public class LoginActivity extends Activity{
             Toast.makeText(this, "密码或账号不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        isChecked = checkBox.isChecked();
+        if(!isChecked)
+            sqlTool.delect("user");
+        Toast.makeText(context, spassword+Integer.parseInt(username), Toast.LENGTH_SHORT).show();
         user.setStuNum(Integer.parseInt(username));
-        user.setPassword("spassword");
+        user.setPassword(spassword);
         new Thread(new Runnable() {
             public void run() {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "密码或账号不能为空12341424", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "正在登陆", Toast.LENGTH_SHORT).show();
                     }
                 });
                 User result_user = Function.login(user);
@@ -91,21 +98,23 @@ public class LoginActivity extends Activity{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(context, "登陸成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "登陆成功", Toast.LENGTH_SHORT).show();
                         }
                     });
-                    isChecked = checkBox.isChecked();
                     if(isChecked){
                         sqlTool.delect("user");
                         sqlTool.saveUser(result_user);
-                    }else {
-                        sqlTool.delect("user");
                     }
-
-
+                    Confing.LOGIN_STATE = true;
+                    LoginActivity.this.finish();
+                }else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(context, "登陆失败", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
-
-
             }}).start();
 
 

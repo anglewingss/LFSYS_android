@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.R;
 
 /**
@@ -28,6 +30,12 @@ public class PersonalFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View contentView = inflater.inflate(R.layout.personal_upside, null);
         mContext = getActivity();
+        if(Confing.LOGIN_STATE){
+            ImageView personal_img = (ImageView) contentView.findViewById(R.id.personal_img);
+            personal_img.setImageDrawable(mContext.getResources().getDrawable(R.drawable.personal_finish));
+        }
+
+
 
         return contentView;
     }

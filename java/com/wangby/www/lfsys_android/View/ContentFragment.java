@@ -8,13 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.wangby.www.lfsys_android.Object.Goods;
 import com.wangby.www.lfsys_android.Object.MessageUse;
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.Tool.SqlTool;
+import com.wangby.www.lfsys_android.connect.Function;
+import com.wangby.www.lfsys_android.connect.Post;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 王炳炎 on 2017/4/24.
@@ -22,9 +25,11 @@ import java.util.ArrayList;
 public class ContentFragment extends Fragment {
 
     ListView listView;
-    ArrayList<Goods> goodsList;
-    SqlTool sqlTool;
     Context mContext;
+    List<Post> goodslist;
+    SqlTool sqlTool;
+    String type;
+
     public static ContentFragment getFragment(String type){
         Bundle arguments = new Bundle();
         arguments.putString("TYPE", type);//放入map
@@ -39,18 +44,49 @@ public class ContentFragment extends Fragment {
         View contentView = inflater.inflate(R.layout.fragment_content, null);
         mContext = getActivity();
         listView = (ListView) contentView.findViewById(R.id.listview);
-        inilistview(getArguments().getString("TYPE"));
-
+        sqlTool = new SqlTool(mContext);
+        type = getArguments().getString("TYPE");
+        inilistview();
         return contentView;
     }
 
-    private void inilistview(String type) {
+    private void inilistview() {
         switch(type){
             case "goods_lost":
-                listView.setAdapter(new GoodsAdapter(mContext, SqlTool.getTextGoods()));
+                goodslist = sqlTool.getGood("lost");
+                if(goodslist!=null){
+                    listView.setAdapter(new GoodsAdapter(mContext, goodslist));
+                    Toast.makeText(mContext, "有数据lost", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(mContext, "没有数据lost", Toast.LENGTH_SHORT).show();
+                }
+                new Thread(new Runnable() {
+                    public void run() {
+                        List<Post> list = Function.showLost();
+                        if(list !=null) {
+                            sqlTool.delect("lost");
+                            sqlTool.saveGoods(list, "lost");
+                        }
+                    }
+                }).start();
                 break;
             case "goods_found":
-                listView.setAdapter(new GoodsAdapter(mContext, SqlTool.getTextGoods()));
+                goodslist = sqlTool.getGood("found");
+                if(goodslist!=null){
+                    Toast.makeText(mContext, "有数据found", Toast.LENGTH_SHORT).show();
+                    listView.setAdapter(new GoodsAdapter(mContext, goodslist));
+                }else {
+                    Toast.makeText(mContext, "没有数据found", Toast.LENGTH_SHORT).show();
+                }
+//                new Thread(new Runnable() {
+//                    public void run() {
+//                        List<Post> list = Function.showFound();
+//                        if(list !=null) {
+//                            sqlTool.delect("Found");
+//                            sqlTool.saveGoods(list, "Found");
+//                        }
+//                    }
+//                }).start();
                 break;
             case "issue":
                 listView.setAdapter(new IssueAdapter(mContext));
@@ -68,7 +104,39 @@ public class ContentFragment extends Fragment {
                 listView.setAdapter(new MessageAdapter(mContext,messlist));
                 break;
         }
-
     }
 
+    @Override
+    public void onStop() {
+
+        switch(type){
+            case "goods_lost":
+                Toast.makeText(mContext, "走了lost", Toast.LENGTH_SHORT).show();
+                goodslist = sqlTool.getGood("lost");
+                if(goodslist!=null){
+                    listView.setAdapter(new GoodsAdapter(mContext, goodslist));
+                }
+//                new Thread(new Runnable() {
+//                    public void run() {
+//                        List<Post> list = Function.showLost();
+//                        sqlTool.saveGoods(list,"lost");
+//                    }
+//                }).start();
+                break;
+            case "goods_found":
+                Toast.makeText(mContext, "走了found", Toast.LENGTH_SHORT).show();
+                goodslist = sqlTool.getGood("found");
+                if(goodslist!=null){
+                    listView.setAdapter(new GoodsAdapter(mContext, goodslist));
+                }
+//                new Thread(new Runnable() {
+//                    public void run() {
+//                        List<Post> list = Function.showFound();
+//                        sqlTool.saveGoods(list,"found");
+//                    }
+//                }).start();
+                break;
+        }
+        super.onStop();
+    }
 }

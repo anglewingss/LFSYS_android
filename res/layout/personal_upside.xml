@@ -9,12 +9,14 @@
     android:layout_width="match_parent"
     android:layout_height="244dp">
     <ImageView
+        android:id="@+id/personal_img"
         android:onClick="imageview"
         android:layout_gravity="center"
         android:layout_width="128dp"
         android:layout_height="123dp"
         android:background="@drawable/personal_img"
         android:layout_marginTop="20dp"/>
+
 
     <LinearLayout
         android:gravity="center"

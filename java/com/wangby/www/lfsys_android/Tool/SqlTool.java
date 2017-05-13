@@ -6,9 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.wangby.www.lfsys_android.Object.Goods;
+import com.wangby.www.lfsys_android.connect.Post;
 import com.wangby.www.lfsys_android.connect.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 王炳炎 on 2017/3/24.
@@ -16,14 +18,18 @@ import java.util.ArrayList;
 
 public class SqlTool {
     private SqlMode sqlMode;
+
+
     public SqlTool(Context context){
         sqlMode = new SqlMode(context);
     }
+
     public void delect(String object){
         SQLiteDatabase db = sqlMode.getReadableDatabase();
         db.delete(object,null,null);
         db.close();
     }
+
     public void saveUser(User user){
         SQLiteDatabase db = sqlMode.getReadableDatabase();
         ContentValues values = new ContentValues();
@@ -35,19 +41,29 @@ public class SqlTool {
         db.insert("user",null,values);
         db.close();
     }
-    public void saveGoods(ArrayList<Goods> list, String type){
+
+    public void saveGoods( List<Post> list, String type){
         SQLiteDatabase db = sqlMode.getReadableDatabase();
-        for (Goods newsBean : list) {
+//        db.delete(type,null,null);
+        for (Post c : list) {
             ContentValues values = new ContentValues();
-            values.put("Gimg", newsBean.Gimg);
-            values.put("Gid", newsBean.Gid);
-            values.put("Gname", newsBean.Gname);
-            values.put("place", newsBean.place);
-            values.put("Uname", newsBean.Uname);
-            values.put("Uid", newsBean.Uid);
-            values.put("des", newsBean.des);
-            values.put("time", newsBean.time);
-            values.put("type", newsBean.type);
+            values.put("type",c.getType());
+            values.put("id",c.getId());
+            values.put("goodsName", c.getGoodsName());
+            values.put("subKindID", c.getSubKindID());
+            values.put("subKindName", c.getSubKindName());
+            values.put("place", c.getPlace());
+            values.put("time", c.getTime());
+            values.put("decp", c.getDecp());
+            values.put("datail", c.getDatail());
+            values.put("stuNum", c.getStuNum());
+            if(c.isClash())
+                values.put("isClash", 1);
+            else
+                values.put("isClash", 0);
+            values.put("publishTime", c.getPublishTime());
+            values.put("remark", c.getRemark());
+            values.put("photo", c.getPhoto());
             db.insert(type, null, values);
         }
         db.close();
@@ -60,8 +76,11 @@ public class SqlTool {
         Cursor c = db.rawQuery(sql, null);
         if (c != null && c.getCount() > 0) {
             while (c.moveToNext()) {
-//                user.name = c.getString(0);
-//                user.password = c.getString(1);
+                user.setStuNum(c.getInt(0));
+                user.setPassword(c.getString(1));
+                user.setName(c.getString(2));
+                user.setPhone(c.getString(3));
+                user.setOredit(c.getInt(4));
             }
             db.close();
             c.close();
@@ -72,29 +91,35 @@ public class SqlTool {
         return null;
     }
 
-    public ArrayList<Goods> getGood(String type){
+    public List<Post> getGood(String type){
         String sql = "select * from "+type;
-        ArrayList<Goods> list = new ArrayList<Goods>();
+        List<Post> list = new ArrayList<Post>();
         SQLiteDatabase db = sqlMode.getReadableDatabase();
+        int a =10;
+        long b =a;
         Cursor c = db.rawQuery(sql,null);
         if(c != null && c.getCount()>0){
             while(c.moveToNext()){
-                Goods d = new Goods();
-                d.Gimg = c.getString(0);
-                d.Gid=c.getInt(1);
-                d.Gname=c.getString(2);
-                d.place=c.getString(3);
-                d.Uname=c.getString(4);
-                d.Uid=c.getString(5);
-                d.des=c.getString(6);
-                d.time=c.getString(7);
-                d.type=c.getString(8);
+                Post d = new Post();
+                d.setType(c.getInt(0));
+                d.setId(c.getInt(1));
+                d.setGoodsName(c.getString(2));
+                d.setSubKindID(c.getInt(3));
+                d.setSubKindName(c.getString(4));
+                d.setPlace(c.getString(5));
+                d.setTime(c.getInt(6));
+                d.setDecp(c.getString(7));
+                d.setDatail(c.getString(8));
+                d.setStuNum(c.getInt(9));
+                d.setClash(c.getInt(10)==1);
+                d.setPublishTime(c.getInt(11));
+                d.setRemark(c.getString(12));
+                d.setPhoto(c.getString(13));
                 list.add(d);
             }
             db.close();
             c.close();
             return list;
-
         }
         db.close();
         c.close();

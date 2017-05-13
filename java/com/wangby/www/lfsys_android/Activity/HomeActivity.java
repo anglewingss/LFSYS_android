@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.View.ContentFragment;
 import com.wangby.www.lfsys_android.View.PersonalFragment;
@@ -60,8 +61,11 @@ public class HomeActivity extends AppCompatActivity {
      * @param v
      */
     public void imageview(View v){
-        startActivity(new Intent(this, LoginActivity.class));
-
+        if(Confing.LOGIN_STATE){
+            startActivity(new Intent(this, PersonalActivity.class));
+        }else {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
     }
 
 

@@ -6,6 +6,7 @@
     android:weightSum="1">
 
     <com.wangby.www.lfsys_android.Tool.ImgTool
+        android:src="@drawable/noimg"
         android:layout_gravity="center"
         android:layout_width="115dp"
         android:layout_height="106dp"

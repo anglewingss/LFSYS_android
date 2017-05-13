@@ -73,10 +73,8 @@ public class Function {
 				}	
 			}
 		} catch (UnsupportedEncodingException e) {
-			// TODO �Զ����ɵ� catch ��
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO �Զ����ɵ� catch ��
 			e.printStackTrace();
 		} catch (JSONException e) {
 			e.printStackTrace();

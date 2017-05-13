@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LFSYS_android</string>
+    <string name="app">LFSYS</string>
 </resources>
