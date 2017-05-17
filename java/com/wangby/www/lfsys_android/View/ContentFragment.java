@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.wangby.www.lfsys_android.Object.MessageUse;
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.Tool.SqlTool;
-import com.wangby.www.lfsys_android.connect.Function;
 import com.wangby.www.lfsys_android.connect.Post;
 
 import java.util.ArrayList;
@@ -60,15 +59,6 @@ public class ContentFragment extends Fragment {
                 }else {
                     Toast.makeText(mContext, "没有数据lost", Toast.LENGTH_SHORT).show();
                 }
-                new Thread(new Runnable() {
-                    public void run() {
-                        List<Post> list = Function.showLost();
-                        if(list !=null) {
-                            sqlTool.delect("lost");
-                            sqlTool.saveGoods(list, "lost");
-                        }
-                    }
-                }).start();
                 break;
             case "goods_found":
                 goodslist = sqlTool.getGood("found");
@@ -78,15 +68,6 @@ public class ContentFragment extends Fragment {
                 }else {
                     Toast.makeText(mContext, "没有数据found", Toast.LENGTH_SHORT).show();
                 }
-                new Thread(new Runnable() {
-                    public void run() {
-                        List<Post> list = Function.showFound();
-                        if(list !=null) {
-                            sqlTool.delect("Found");
-                            sqlTool.saveGoods(list, "Found");
-                        }
-                    }
-                }).start();
                 break;
             case "issue":
                 listView.setAdapter(new IssueAdapter(mContext));
@@ -116,12 +97,6 @@ public class ContentFragment extends Fragment {
                 if(goodslist!=null){
                     listView.setAdapter(new GoodsAdapter(mContext, goodslist));
                 }
-//                new Thread(new Runnable() {
-//                    public void run() {
-//                        List<Post> list = Function.showLost();
-//                        sqlTool.saveGoods(list,"lost");
-//                    }
-//                }).start();
                 break;
             case "goods_found":
                 Toast.makeText(mContext, "走了found", Toast.LENGTH_SHORT).show();
@@ -129,12 +104,6 @@ public class ContentFragment extends Fragment {
                 if(goodslist!=null){
                     listView.setAdapter(new GoodsAdapter(mContext, goodslist));
                 }
-//                new Thread(new Runnable() {
-//                    public void run() {
-//                        List<Post> list = Function.showFound();
-//                        sqlTool.saveGoods(list,"found");
-//                    }
-//                }).start();
                 break;
         }
         super.onStop();

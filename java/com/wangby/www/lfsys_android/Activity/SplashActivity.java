@@ -52,6 +52,24 @@ public class SplashActivity extends Activity {
                 }}).start();
         }
 
+//        new Thread(new Runnable() {
+//            public void run() {
+//                List<Post> list=null;
+//                list = Function.showLost();
+//                if(list !=null) {
+//                    sqlTool.delect("lost");
+//                    sqlTool.saveGoods(list, "lost");
+//                }
+//                List<Post> listf=null;
+//                listf = Function.showFound();
+//                if(listf !=null) {
+//                    sqlTool.delect("Found");
+//                    sqlTool.saveGoods(listf, "Found");
+//                }
+//
+//            }
+//        }).start();
+
 
         enterHome();
     }

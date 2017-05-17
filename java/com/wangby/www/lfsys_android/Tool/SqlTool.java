@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.Object.Goods;
 import com.wangby.www.lfsys_android.connect.Post;
 import com.wangby.www.lfsys_android.connect.User;
@@ -91,15 +92,18 @@ public class SqlTool {
         return null;
     }
 
-
     public List<Post> searchGood(String key){
-        String sql = "select * from lost,found where goodsName='"+key+"'";
+        String sql = "select * from lost where goodsName like '%"+key+"%'";
+        if(Confing.fragments==1){
+            sql = "select * from found where goodsName like '%"+key+"%'";
+        }
+
         List<Post> list = new ArrayList<Post>();
         SQLiteDatabase db = sqlMode.getReadableDatabase();
-        int a =10;
-        long b =a;
         Cursor c = db.rawQuery(sql,null);
+//        Cursor c = db.rawQuery("select * from lost where name like ? and age=?", new String[]{"%林计钦%", "4"});
         if(c != null && c.getCount()>0){
+
             while(c.moveToNext()){
                 Post d = new Post();
                 d.setType(c.getInt(0));
@@ -121,7 +125,10 @@ public class SqlTool {
             db.close();
             c.close();
             return list;
+
         }
+
+
         db.close();
         c.close();
         return null;
@@ -131,8 +138,6 @@ public class SqlTool {
         String sql = "select * from "+type;
         List<Post> list = new ArrayList<Post>();
         SQLiteDatabase db = sqlMode.getReadableDatabase();
-        int a =10;
-        long b =a;
         Cursor c = db.rawQuery(sql,null);
         if(c != null && c.getCount()>0){
             while(c.moveToNext()){

@@ -52,5 +52,8 @@ public class PersonalActivity extends Activity {
         sqlTool.delect("user");
         finish();
     }
+    public void breakp(View v){
+        finish();
+    }
 
 }

@@ -41,6 +41,8 @@ public class HomeActivity extends AppCompatActivity {
     //下栏名字
     String[] strdown = new String[]{"失物", "拾物", "发布", "信息", "个人"};
 
+    View tab_search=null;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -50,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
 
         mTabTl = (TabLayout) findViewById(R.id.tl_tab);
         mContentVp = (ViewPager) findViewById(R.id.vp_content);
+
         initContent();
 
         initTab();
@@ -82,6 +85,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 toolbar.setTitle(str[tab.getPosition()]);
+                Confing.fragments=tab.getPosition();
+                if(tab.getPosition()>1){
+                    tab_search = findViewById(R.id.tab_search);
+                    tab_search.setVisibility(View.GONE);
+                }else {
+                    tab_search = findViewById(R.id.tab_search);
+                    tab_search.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

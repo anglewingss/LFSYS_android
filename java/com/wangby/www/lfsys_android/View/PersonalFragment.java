@@ -31,10 +31,6 @@ public class PersonalFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         contentView = inflater.inflate(R.layout.personal_upside, null);
         mContext = getActivity();
-        if(Confing.LOGIN_STATE){
-            ImageView personal_img = (ImageView) contentView.findViewById(R.id.personal_img);
-            personal_img.setImageDrawable(mContext.getResources().getDrawable(R.drawable.personal_finish));
-        }
         return contentView;
     }
 
@@ -43,7 +39,7 @@ public class PersonalFragment extends Fragment{
     public void onStart() {
         if(Confing.LOGIN_STATE){
             ImageView personal_img = (ImageView) contentView.findViewById(R.id.personal_img);
-            personal_img.setImageDrawable(mContext.getResources().getDrawable(R.drawable.personal_finish));
+            personal_img.setImageDrawable(mContext.getResources().getDrawable(R.drawable.personal_f));
         }
         super.onStart();
     }

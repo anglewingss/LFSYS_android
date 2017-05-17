@@ -106,6 +106,7 @@ public class LoginActivity extends Activity{
                         sqlTool.saveUser(result_user);
                     }
                     Confing.LOGIN_STATE = true;
+                    Confing.user = result_user;
                     LoginActivity.this.finish();
                 }else {
                     runOnUiThread(new Runnable() {

@@ -1,13 +1,16 @@
 package com.wangby.www.lfsys_android.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.wangby.www.lfsys_android.Activity.IssueActivity;
 import com.wangby.www.lfsys_android.Object.Issue;
 import com.wangby.www.lfsys_android.R;
 
@@ -39,8 +42,23 @@ public class IssueAdapter extends BaseAdapter {
         return list.get(position);
     }
 
+    int a=0;
     @Override
     public long getItemId(int position) {
+        switch (position){
+            case 0:
+                mContext.startActivity(new Intent(mContext, IssueActivity.class));
+                Toast.makeText(mContext, "走了000", Toast.LENGTH_SHORT).show();
+                break;
+            case 1:
+                mContext.startActivity(new Intent(mContext, IssueActivity.class));
+                Toast.makeText(mContext, "走了111", Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                mContext.startActivity(new Intent(mContext, IssueActivity.class));
+                break;
+        }
+        Toast.makeText(mContext, "走了"+a++, Toast.LENGTH_SHORT).show();
         return position;
     }
 
