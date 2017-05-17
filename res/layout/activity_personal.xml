@@ -238,6 +238,7 @@
 
 
     <TextView
+        android:onClick="exit"
         android:id="@+id/tv_submit"
         android:layout_width="fill_parent"
         android:layout_height="45.0dip"

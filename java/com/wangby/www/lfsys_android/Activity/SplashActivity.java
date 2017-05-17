@@ -47,6 +47,7 @@ public class SplashActivity extends Activity {
                                 Toast.makeText(mContext, "登陆失败", Toast.LENGTH_SHORT).show();
                             }
                         });
+                        Confing.LOGIN_STATE = false;
                     }
                 }}).start();
         }

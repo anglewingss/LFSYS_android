@@ -11,9 +11,6 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
-
-
-
         <Button
             android:id="@+id/search_back"
             android:layout_gravity="center"
@@ -59,13 +56,11 @@
     </RelativeLayout>
 
     <ListView
-        android:visibility="gone"
-        android:id="@+id/search_lv_tips"
-        android:background="@drawable/lv_search_tips_bg"
+        android:id="@+id/search_list"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="match_parent">
     </ListView>
 </LinearLayout>

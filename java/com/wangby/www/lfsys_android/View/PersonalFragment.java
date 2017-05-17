@@ -18,6 +18,7 @@ import com.wangby.www.lfsys_android.R;
 public class PersonalFragment extends Fragment{
 
     Context mContext;
+    View contentView;
     public static PersonalFragment getFragment(){
         Bundle arguments = new Bundle();
         PersonalFragment tabContentFragment = new PersonalFragment();
@@ -28,16 +29,22 @@ public class PersonalFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View contentView = inflater.inflate(R.layout.personal_upside, null);
+        contentView = inflater.inflate(R.layout.personal_upside, null);
         mContext = getActivity();
         if(Confing.LOGIN_STATE){
             ImageView personal_img = (ImageView) contentView.findViewById(R.id.personal_img);
             personal_img.setImageDrawable(mContext.getResources().getDrawable(R.drawable.personal_finish));
         }
-
-
-
         return contentView;
     }
 
+
+    @Override
+    public void onStart() {
+        if(Confing.LOGIN_STATE){
+            ImageView personal_img = (ImageView) contentView.findViewById(R.id.personal_img);
+            personal_img.setImageDrawable(mContext.getResources().getDrawable(R.drawable.personal_finish));
+        }
+        super.onStart();
+    }
 }

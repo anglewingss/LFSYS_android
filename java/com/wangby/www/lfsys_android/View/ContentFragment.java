@@ -78,15 +78,15 @@ public class ContentFragment extends Fragment {
                 }else {
                     Toast.makeText(mContext, "没有数据found", Toast.LENGTH_SHORT).show();
                 }
-//                new Thread(new Runnable() {
-//                    public void run() {
-//                        List<Post> list = Function.showFound();
-//                        if(list !=null) {
-//                            sqlTool.delect("Found");
-//                            sqlTool.saveGoods(list, "Found");
-//                        }
-//                    }
-//                }).start();
+                new Thread(new Runnable() {
+                    public void run() {
+                        List<Post> list = Function.showFound();
+                        if(list !=null) {
+                            sqlTool.delect("Found");
+                            sqlTool.saveGoods(list, "Found");
+                        }
+                    }
+                }).start();
                 break;
             case "issue":
                 listView.setAdapter(new IssueAdapter(mContext));

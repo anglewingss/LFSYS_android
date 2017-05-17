@@ -91,6 +91,42 @@ public class SqlTool {
         return null;
     }
 
+
+    public List<Post> searchGood(String key){
+        String sql = "select * from lost,found where goodsName='"+key+"'";
+        List<Post> list = new ArrayList<Post>();
+        SQLiteDatabase db = sqlMode.getReadableDatabase();
+        int a =10;
+        long b =a;
+        Cursor c = db.rawQuery(sql,null);
+        if(c != null && c.getCount()>0){
+            while(c.moveToNext()){
+                Post d = new Post();
+                d.setType(c.getInt(0));
+                d.setId(c.getInt(1));
+                d.setGoodsName(c.getString(2));
+                d.setSubKindID(c.getInt(3));
+                d.setSubKindName(c.getString(4));
+                d.setPlace(c.getString(5));
+                d.setTime(c.getInt(6));
+                d.setDecp(c.getString(7));
+                d.setDatail(c.getString(8));
+                d.setStuNum(c.getInt(9));
+                d.setClash(c.getInt(10)==1);
+                d.setPublishTime(c.getInt(11));
+                d.setRemark(c.getString(12));
+                d.setPhoto(c.getString(13));
+                list.add(d);
+            }
+            db.close();
+            c.close();
+            return list;
+        }
+        db.close();
+        c.close();
+        return null;
+    }
+
     public List<Post> getGood(String type){
         String sql = "select * from "+type;
         List<Post> list = new ArrayList<Post>();
