@@ -67,6 +67,12 @@ public class HomeActivity extends AppCompatActivity {
         if(Confing.LOGIN_STATE){
             startActivity(new Intent(this, PersonalActivity.class));
         }else {
+
+//            Intent newIntent = new Intent(this, LoginActivity.class);
+//            newIntent.putExtra("state",0 );
+//            // 开始一个新的 Activity等候返回结果
+//            startActivityForResult(newIntent, 0);
+
             startActivity(new Intent(this, LoginActivity.class));
         }
     }

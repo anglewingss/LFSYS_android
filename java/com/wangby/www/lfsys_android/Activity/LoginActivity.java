@@ -72,6 +72,15 @@ public class LoginActivity extends Activity{
     }
 
     public void login(View v){
+        Confing.LOGIN_STATE = true;
+        finish();
+
+
+
+
+
+        //------------------------------------------------------------
+
         String username = name.getText().toString().trim();
         String spassword = password.getText().toString().trim();
         final User user = new User();
@@ -107,6 +116,19 @@ public class LoginActivity extends Activity{
                     }
                     Confing.LOGIN_STATE = true;
                     Confing.user = result_user;
+
+
+//                    // 设置返回数据
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("phonenumber",);
+//                    Intent intent = new Intent();
+//                    intent.putExtras(bundle);
+//                    // 返回intent
+//                    setResult(RESULT_OK, intent);
+//                    finish();
+
+
+
                     LoginActivity.this.finish();
                 }else {
                     runOnUiThread(new Runnable() {

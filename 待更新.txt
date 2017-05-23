@@ -1,2 +1,4 @@
 android4.4属性
 android:fitsSystemWindows   内容是占满整个屏幕高度的，状态栏显示为透明的
+
+登陆成功 返回 带参数 更换头像onActivityResult的用法

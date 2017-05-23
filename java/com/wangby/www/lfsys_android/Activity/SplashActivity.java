@@ -12,7 +12,10 @@ import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.Tool.SqlTool;
 import com.wangby.www.lfsys_android.connect.Function;
+import com.wangby.www.lfsys_android.connect.Post;
 import com.wangby.www.lfsys_android.connect.User;
+
+import java.util.List;
 
 public class SplashActivity extends Activity {
     Context mContext;
@@ -52,23 +55,23 @@ public class SplashActivity extends Activity {
                 }}).start();
         }
 
-//        new Thread(new Runnable() {
-//            public void run() {
-//                List<Post> list=null;
-//                list = Function.showLost();
-//                if(list !=null) {
-//                    sqlTool.delect("lost");
-//                    sqlTool.saveGoods(list, "lost");
-//                }
-//                List<Post> listf=null;
-//                listf = Function.showFound();
-//                if(listf !=null) {
-//                    sqlTool.delect("Found");
-//                    sqlTool.saveGoods(listf, "Found");
-//                }
-//
-//            }
-//        }).start();
+        new Thread(new Runnable() {
+            public void run() {
+                List<Post> list=null;
+                list = Function.showLost();
+                if(list !=null) {
+                    sqlTool.delect("lost");
+                    sqlTool.saveGoods(list, "lost");
+                }
+                List<Post> listf=null;
+                listf = Function.showFound();
+                if(listf !=null) {
+                    sqlTool.delect("Found");
+                    sqlTool.saveGoods(listf, "Found");
+                }
+
+            }
+        }).start();
 
 
         enterHome();

@@ -35,12 +35,14 @@ public class PersonalFragment extends Fragment{
     }
 
 
+
+
     @Override
-    public void onStart() {
+    public void onResume() {
         if(Confing.LOGIN_STATE){
             ImageView personal_img = (ImageView) contentView.findViewById(R.id.personal_img);
-            personal_img.setImageDrawable(mContext.getResources().getDrawable(R.drawable.personal_f));
+            personal_img.setImageDrawable(mContext.getResources().getDrawable(R.drawable.personal_finishal));
         }
-        super.onStart();
+        super.onResume();
     }
 }
