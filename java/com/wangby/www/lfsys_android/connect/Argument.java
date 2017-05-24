@@ -23,63 +23,48 @@ public class Argument {
 		JSONObject json = null;
 		try {
 			json = new JSONObject(jsonString);
-			this.argumentID = json.getLong("argumentID");
-			this.stuNum = json.getInt("stuNum");
-			this.reason = json.getString("reason");
-			this.goodsID = json.getLong("goodsID");
-			this.gooodsName = json.getString("gooodsName");
-			this.time = json.getLong("time");
-			this.arguState = json.getString("arguState");
 
-
-
+		this.argumentID = json.getLong("argumentID");
+		this.stuNum = json.getInt("stuNum");
+		this.reason = json.getString("reason");
+		this.goodsID = json.getLong("goodsID");
+		this.gooodsName = json.getString("gooodsName");
+		this.time = json.getLong("time");
+		this.arguState = json.getString("arguState");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	public Argument(JSONObject jsonObject) {
-
 		try {
-
-			argumentID = jsonObject.getLong("argumentID");
-			this.stuNum = jsonObject.getInt("stuNum");
-			this.reason = jsonObject.getString("reason");
-			this.goodsID = jsonObject.getLong("goodsID");
-			this.gooodsName = jsonObject.getString("gooodsName");
-			this.time = jsonObject.getLong("time");
-			this.arguState = jsonObject.getString("arguState");
-
-
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-
+		argumentID = jsonObject.getLong("argumentID");
+		this.stuNum = jsonObject.getInt("stuNum");
+		this.reason = jsonObject.getString("reason");
+		this.goodsID = jsonObject.getLong("goodsID");
+		this.gooodsName = jsonObject.getString("gooodsName");
+		this.time = jsonObject.getLong("time");
+		this.arguState = jsonObject.getString("arguState");
+	} catch (JSONException e) {
+		e.printStackTrace();
+	}
 	}
 
 	@Override
 	public String toString() {
-		JSONObject json = new JSONObject();
-
+		JSONObject json = null;
 		try {
-			json.put("argumentID", this.argumentID);
-			json.put("stuNum", this.stuNum);
-			json.put("reason", this.reason);
-			json.put("goodsID", this.goodsID);
-			json.put("gooodsName", this.gooodsName);
-			json.put("time", this.time);
-			json.put("arguState", this.arguState);
-
-
-
-
-
-
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-
+		json = new JSONObject();
+		json.put("argumentID", this.argumentID);
+		json.put("stuNum", this.stuNum);
+		json.put("reason", this.reason);
+		json.put("goodsID", this.goodsID);
+		json.put("gooodsName", this.gooodsName);
+		json.put("time", this.time);
+		json.put("arguState", this.arguState);
+	} catch (JSONException e) {
+		e.printStackTrace();
+	}
 		return json.toString();
 	}
 	
@@ -138,7 +123,7 @@ public class Argument {
 		this.goodsID = 0;			//��Ʒ���
 		this.gooodsName = "";		//��Ʒ����
 		this.time = 0;				//����ʱ��
-		this.arguState = "未处理";	//����״̬
+		this.arguState = "δ����";	//����״̬
 	}
 	
 }

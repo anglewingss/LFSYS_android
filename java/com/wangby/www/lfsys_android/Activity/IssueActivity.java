@@ -70,12 +70,14 @@ public class IssueActivity extends Activity implements View.OnClickListener {
 
     }
 
-
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.take_apictures:
                 takeph();
-            ;
+                mDialog.dismiss();
+                break;
+            case R.id.select_photo:
+                openAlbum();
             case R.id.select_cancel:
                 mDialog.dismiss();
                 break;
@@ -105,7 +107,6 @@ public class IssueActivity extends Activity implements View.OnClickListener {
     }
 
     public void addimg(View v){
-
         mDialog.show();
     }
 

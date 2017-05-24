@@ -1,16 +1,16 @@
 package com.wangby.www.lfsys_android.connect;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.ByteBuffer;
+
 
 
 
 public class DataPackage {
 
 	private int port;
-	private ByteBuffer data;
+	private byte[] data;
 	
-	public DataPackage(int port, ByteBuffer data) {
+	public DataPackage(int port, byte[] data) {
 		this.port=port;
 		this.data =data;
 	}
@@ -22,23 +22,21 @@ public class DataPackage {
 	
 	public String getString() throws UnsupportedEncodingException
 	{
-	    String str=new String(data.array(),"UTF-8");
+	    String str=new String(data,"UTF-8");
 	    return str;
 	}
 	
 	public void writeString(String data) throws UnsupportedEncodingException
 	{
-		byte[] temp=data.getBytes("UTF-8");
-		ByteBuffer newBuffer=ByteBufferTools.toByteBuffer(temp);
-		this.data=newBuffer;
+		this.data=data.getBytes("UTF-8");
 	}
 	
-	public void setData(ByteBuffer data)
+	public void setData(byte[] data)
 	{
 		this.data=data;
 	}
 	
-	public ByteBuffer getData()
+	public byte[] getData()
 	{
 		return data;
 	}
@@ -55,7 +53,7 @@ public class DataPackage {
 	
 	public int getDataSize()
 	{
-		return data.limit();
+		return data.length;
 	}
 
 }

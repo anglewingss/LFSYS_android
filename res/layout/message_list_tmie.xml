@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:id="@+id/msg_list_item_recv"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="2dp"
+    android:background="@color/blue">
+
+
+    <LinearLayout
+        android:id="@+id/mms_layout_view_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:id="@+id/message_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="44dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="left"
+                android:orientation="vertical">
+
+                <TextView
+                    android:textSize="20dp"
+                    android:id="@+id/text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    android:background="@drawable/message_received_2"
+                    android:gravity="center_vertical"
+                    android:linksClickable="true"
+                    />
+
+            </LinearLayout>
+            <ImageView
+                android:src="@drawable/personal_img"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignBottom="@id/message_block"/>
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
+

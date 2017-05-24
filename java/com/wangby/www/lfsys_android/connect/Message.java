@@ -25,10 +25,11 @@ public class Message {
 		JSONObject json = new JSONObject();
 		try {
 			json.put("type", this.type);
-			json.put("data", this.data);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+
+		json.put("data", this.data);
+	} catch (JSONException e) {
+		e.printStackTrace();
+	}
 		return json.toString();
 	}
 }

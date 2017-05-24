@@ -90,6 +90,12 @@
                     android:textSize="45px" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.0px"
+                android:layout_marginLeft="15.0dip"
+                android:background="#555" />
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="55.0dip"
@@ -114,6 +120,14 @@
                     android:layout_weight="1.0"
                     android:textSize="45px" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.0px"
+                android:layout_marginLeft="15.0dip"
+                android:background="#555" />
+
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="110.0dip"
@@ -138,6 +152,13 @@
                     android:layout_weight="1.0"
                     android:textSize="45px" />
             </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.0px"
+                android:layout_marginLeft="15.0dip"
+                android:background="#555" />
 
 
             <LinearLayout
@@ -165,6 +186,14 @@
                     android:textSize="45px" />
             </LinearLayout>
 
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.0px"
+                android:layout_marginLeft="15.0dip"
+                android:background="#555" />
+
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="165.0dip"
@@ -189,6 +218,13 @@
                     android:layout_weight="1.0"
                     android:textSize="45px" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.0px"
+                android:layout_marginLeft="15.0dip"
+                android:background="#555" />
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
