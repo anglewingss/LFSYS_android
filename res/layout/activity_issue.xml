@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:background="#ffff552e"
+            android:background="@color/blue"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal">
@@ -37,8 +37,7 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scrollbars="vertical">
+        android:layout_height="fill_parent">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -49,7 +48,7 @@
         <LinearLayout
             android:onClick="addimg"
             android:layout_width="fill_parent"
-            android:layout_height="250dp"
+            android:layout_height="230dp"
             android:background="#f4f4f6"
             android:gravity="center"
             android:orientation="horizontal"
@@ -289,22 +288,19 @@
                 android:layout_marginLeft="5.0dip"
                 android:src="@drawable/pt_invite_right_icon" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/tv_send_invite"
+            android:layout_width="fill_parent"
+            android:layout_height="45.0dip"
+            android:layout_alignParentBottom="true"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:text="发布"
+            android:textColor="@color/white"
+            android:textSize="55px" />
         </LinearLayout>
         </ScrollView>
     </LinearLayout>
-    <TextView
-        android:id="@+id/tv_send_invite"
-        android:layout_width="fill_parent"
-        android:layout_height="45.0dip"
-        android:layout_alignParentBottom="true"
-        android:background="#ffff552e"
-        android:gravity="center"
-        android:text="发布"
-        android:textColor="@color/white"
-        android:textSize="55px" />
-
-
-
 
 
 

@@ -84,7 +84,7 @@ public class SplashActivity extends Activity {
             {
                 SplashActivity.this.finish();
                 SplashActivity.this.startActivity(new Intent(SplashActivity.this, HomeActivity.class));}
-        }, 2000L);
+        }, 1000L);
     }
 
 

@@ -2,12 +2,15 @@ package com.wangby.www.lfsys_android.Activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.R;
 import com.wangby.www.lfsys_android.Tool.SqlTool;
 import com.wangby.www.lfsys_android.View.GoodsAdapter;
@@ -59,8 +62,17 @@ public class SearchActivity extends Activity implements View.OnClickListener {
                 this.finish();
                 break;
             case R.id.search_button:
-                List<Post> goodslist = sqlTool.searchGood(searchStr.getText().toString());
+                final List<Post> goodslist = sqlTool.searchGood(searchStr.getText().toString());
                 listView.setAdapter(new GoodsAdapter(mContext, goodslist));
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        Confing.goods=goodslist.get(position);
+                        mContext.startActivity(new Intent(mContext, GoodsActivity.class));
+                    }
+                });
                 break;
         }
     }

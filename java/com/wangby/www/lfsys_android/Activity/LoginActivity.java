@@ -72,14 +72,6 @@ public class LoginActivity extends Activity{
     }
 
     public void login(View v){
-        Confing.LOGIN_STATE = true;
-        finish();
-
-
-
-
-
-        //------------------------------------------------------------
 
         String username = name.getText().toString().trim();
         String spassword = password.getText().toString().trim();
