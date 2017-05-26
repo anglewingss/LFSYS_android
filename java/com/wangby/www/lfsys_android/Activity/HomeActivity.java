@@ -37,9 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     private ContentPagerAdapter contentAdapter;
     //顶框
     Toolbar toolbar;
-    String[] str = new String[]{"失物求助", "拾物招领", "物品发布", "信息", "个人中心"};
-    //下栏名字
-    String[] strdown = new String[]{"失物", "拾物", "发布", "信息", "个人"};
+    String[] str = new String[]{"失物求助", "拾物招领", "物品发布",  "个人中心"};
 
     View tab_search=null;
 
@@ -123,7 +121,7 @@ public class HomeActivity extends AppCompatActivity {
         tabFragments.add(ContentFragment.getFragment("goods_lost"));
         tabFragments.add(ContentFragment.getFragment("goods_found"));
         tabFragments.add(ContentFragment.getFragment("issue"));
-        tabFragments.add(ContentFragment.getFragment("message"));
+//        tabFragments.add(ContentFragment.getFragment("message"));
         tabFragments.add(PersonalFragment.getFragment());
         contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
         mContentVp.setAdapter(contentAdapter);
@@ -174,7 +172,7 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
 
-            return strdown[position];
+            return str[position];
         }
     }
 

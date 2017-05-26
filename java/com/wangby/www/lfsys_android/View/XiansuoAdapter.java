@@ -5,28 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wangby.www.lfsys_android.Object.Issue;
 import com.wangby.www.lfsys_android.R;
+import com.wangby.www.lfsys_android.connect.Clue;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by 王炳炎 on 2017/5/2.
+ * Created by 王炳炎 on 2017/5/25.
  */
-public class IssueAdapter extends BaseAdapter {
+public class XiansuoAdapter extends BaseAdapter {
 
-    private ArrayList<Issue> list = new ArrayList<Issue>();
-
+    private  List<Clue> list =null;
     private Context mContext;
 
-    public IssueAdapter(Context mContext) {
+    public XiansuoAdapter(Context mContext, List<Clue> list) {
         this.mContext = mContext;
-        list.add(new Issue(mContext.getResources().getDrawable(R.drawable.personal_finishal),"我的发布"));
-        list.add(new Issue(mContext.getResources().getDrawable(R.drawable.lost_title),"失物发布"));
-        list.add(new Issue(mContext.getResources().getDrawable(R.drawable.foundtitles),"拾物发布"));
+        this.list = list;
     }
 
     @Override
@@ -52,15 +48,15 @@ public class IssueAdapter extends BaseAdapter {
             view = convertView;
         }else {
             LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.lssue_list, null);
+            view = layoutInflater.inflate(R.layout.clue_list, null);
         }
-        ImageView img = (ImageView) view.findViewById(R.id.image_issue);
-        TextView textView = (TextView) view.findViewById(R.id.textView_issue);
-        Issue issue = list.get(position);
-        textView.setText(issue.title);
-        img.setImageDrawable(issue.drawable);
-
+        Clue clue = list.get(position);
+        TextView textView1 = (TextView) view.findViewById(R.id.clue_time);
+        TextView textView2 = (TextView) view.findViewById(R.id.clue_context);
+        textView1.setText("时间："+clue.getTime());
+        textView2.setText("    "+clue.getContent());
 
         return view;
     }
+
 }

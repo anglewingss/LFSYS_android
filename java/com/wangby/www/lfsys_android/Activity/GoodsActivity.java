@@ -1,16 +1,27 @@
 package com.wangby.www.lfsys_android.Activity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.R;
+import com.wangby.www.lfsys_android.View.XiansuoAdapter;
+import com.wangby.www.lfsys_android.connect.Clue;
+import com.wangby.www.lfsys_android.connect.Function;
 import com.wangby.www.lfsys_android.connect.Post;
 
-public class GoodsActivity extends AppCompatActivity {
+import java.util.List;
+
+public class GoodsActivity extends Activity {
 
     ImageView img;
     TextView name;
@@ -19,12 +30,21 @@ public class GoodsActivity extends AppCompatActivity {
     TextView decp;
     TextView datail;
     TextView remark;
+    ListView goodslist;
+    Context mContext;
     Post goods;
+    List<Clue> list;
+    Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            goodslist.setAdapter(new XiansuoAdapter(mContext,list));
+            super.handleMessage(msg);}
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods);
+        mContext = this;
         ini();
         set();
     }
@@ -36,9 +56,20 @@ public class GoodsActivity extends AppCompatActivity {
         decp.setText(goods.getDecp());
         datail.setText(goods.getDatail());
         remark.setText(goods.getRemark());
+        new Thread(new Runnable() {
+            public void run() {
+                list = Function.showClue(goods.getId());
+               if(list!=null){
+                   Message m = handler.obtainMessage();
+                   handler.sendMessage(m);
+                }
+
+            }
+        }).start();
     }
 
     private void ini() {
+        goodslist = (ListView) findViewById(R.id.good_list_xiansuo);
         img = (ImageView) findViewById(R.id.goods_img);
         name = (TextView) findViewById(R.id.goods_name);
         place = (TextView) findViewById(R.id.goods_place);
@@ -52,6 +83,15 @@ public class GoodsActivity extends AppCompatActivity {
     public void breakp(View v){
         finish();
     }
+    public void clue(View v){
+        if(Confing.LOGIN_STATE){
+            startActivity(new Intent(this, ClueActivity.class));
+        }else {
+            Toast.makeText(mContext, "请先进行登陆", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 
 
 }

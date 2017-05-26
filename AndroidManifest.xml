@@ -27,8 +27,8 @@
         <activity android:name=".Activity.PersonalActivity" />
         <activity android:name=".Activity.IssueActivity" />
         <activity android:name=".Activity.GoodsActivity" />
-        <activity android:name=".Activity.MessageActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".Activity.MessageActivity" />
+        <activity android:name=".Activity.ClueActivity"></activity>
     </application>
 
 </manifest>

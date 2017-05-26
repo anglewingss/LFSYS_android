@@ -11,8 +11,10 @@ public class Confing {
     static public boolean LOGIN_STATE = false;
     static public User user= null;
     static public int fragments=0;
+    //浏览物品
     static public Post goods  =null;
     static public MessageUse message =null;
+    static public boolean islost = false;
 
 
 }

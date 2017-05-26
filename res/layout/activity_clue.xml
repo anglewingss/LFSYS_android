@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_clue"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wangby.www.lfsys_android.Activity.ClueActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+    <LinearLayout
+        android:id="@+id/top"
+        android:background="@color/blue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:onClick="breakclue"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_righ"/>
+
+        <TextView
+            android:layout_width="268dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textColor="#ffffffff"
+            android:text="提供线索"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15.0dip"
+        android:background="#555555" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="413dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15.0dip"
+        android:paddingRight="15.0dip"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="67dp"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:text="线索"
+            android:textColor="#ff424242"
+            android:textSize="45px" />
+
+        <EditText
+            android:id="@+id/txt_clue"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:singleLine="true"
+            android:textSize="45px" />
+    </LinearLayout>
+
+    <TextView
+        android:onClick="send_clue"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="发布"
+        android:textColor="@color/white"
+        android:textSize="55px" />
+
+
+</LinearLayout>

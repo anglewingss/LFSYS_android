@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rr_root_view"
     android:layout_width="fill_parent"
@@ -74,6 +74,7 @@
             android:paddingLeft="15.0dip"
             android:paddingRight="15.0dip">
             <TextView
+
                 android:layout_width="90dp"
                 android:layout_height="fill_parent"
                 android:gravity="center_vertical"
@@ -82,6 +83,7 @@
                 android:textSize="45px" />
 
             <EditText
+                android:id="@+id/goodsnames"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
@@ -110,11 +112,113 @@
                 android:layout_width="90dp"
                 android:layout_height="fill_parent"
                 android:gravity="center_vertical"
+                android:text="类 型"
+                android:textColor="#ff424242"
+                android:textSize="45px" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15.0dip"
+            android:background="#fff3f3f3" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="55.0dip"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15.0dip"
+            android:paddingRight="15.0dip">
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
                 android:text="地 点"
                 android:textColor="#ff424242"
                 android:textSize="45px" />
 
             <EditText
+                android:id="@+id/goodplaces"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:singleLine="true"
+                android:textSize="45px" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15.0dip"
+            android:background="#fff3f3f3" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="55.0dip"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15.0dip"
+            android:paddingRight="15.0dip"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/issue_time_text"
+                android:layout_width="90dp"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:text="拾到时间"
+                android:textColor="#ff424242"
+                android:textSize="45px" />
+
+            <EditText
+                android:id="@+id/issue_time"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:singleLine="true"
+                android:textSize="45px" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15.0dip"
+            android:background="#fff3f3f3" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="55.0dip"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15.0dip"
+            android:paddingRight="15.0dip"
+            android:weightSum="1">
+
+            <TextView
+
+                android:layout_width="90dp"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:text="特 征"
+                android:textColor="#ff424242"
+                android:textSize="45px" />
+
+            <EditText
+                android:id="@+id/tezheng"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0"
@@ -132,9 +236,8 @@
         <LinearLayout
             android:id="@+id/ll_choose_age"
             android:layout_width="fill_parent"
-            android:layout_height="55.0dip"
+            android:layout_height="165.0dip"
             android:background="@color/white"
-            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="15.0dip"
             android:paddingRight="15.0dip"
@@ -144,89 +247,15 @@
                 android:layout_width="90dp"
                 android:layout_height="fill_parent"
                 android:gravity="center_vertical"
-                android:text="时 间 "
+                android:text="详细信息"
                 android:textColor="#ff424242"
                 android:textSize="45px" />
 
             <EditText
+                android:id="@+id/xiangxis"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0"
-                android:singleLine="true"
-                android:textSize="45px" />
-        </LinearLayout>
-
-
-        <View
-        android:layout_width="fill_parent"
-        android:layout_height="1.0px"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="15.0dip"
-        android:background="#fff3f3f3" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="55.0dip"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="15.0dip"
-            android:paddingRight="15.0dip"
-            android:weightSum="1">
-
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="fill_parent"
-                android:gravity="center_vertical"
-                android:text="时 间 "
-                android:textColor="#ff424242"
-                android:textSize="45px" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1.0"
-                android:singleLine="true"
-                android:textSize="45px" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="15.0dip"
-            android:background="#fff3f3f3" />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0px"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="15.0dip"
-            android:background="#fff3f3f3" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="55.0dip"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="15.0dip"
-            android:paddingRight="15.0dip"
-            android:weightSum="1">
-
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="fill_parent"
-                android:gravity="center_vertical"
-                android:text="时 间 "
-                android:textColor="#ff424242"
-                android:textSize="45px" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1.0"
-                android:singleLine="true"
                 android:textSize="45px" />
         </LinearLayout>
 
@@ -237,57 +266,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <LinearLayout
-            android:id="@+id/ll_update_time"
-            android:layout_width="fill_parent"
-            android:layout_height="55.0dip"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="15.0dip"
-            android:paddingRight="15.0dip">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:gravity="center_vertical"
-                android:text="更新时间"
-                android:textColor="#ff424242"
-                android:textSize="45px" />
-
-            <TextView
-                android:id="@+id/tv_update_time"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1.0"
-                android:background="#00000000"
-                android:gravity="center|right"
-                android:text="不限"
-                android:textColor="#ff555555"
-                android:textSize="45px" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:src="@drawable/pt_invite_right_icon" />
-        </LinearLayout>
         <TextView
-            android:id="@+id/tv_send_invite"
+            android:onClick="sendss"
             android:layout_width="fill_parent"
             android:layout_height="45.0dip"
             android:layout_alignParentBottom="true"

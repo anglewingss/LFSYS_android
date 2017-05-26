@@ -103,13 +103,26 @@ public class ContentFragment extends Fragment {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         switch (position){
                             case 0:
-                                mContext.startActivity(new Intent(mContext, IssueActivity.class));
                                 break;
                             case 1:
-                                mContext.startActivity(new Intent(mContext, IssueActivity.class));
+                                if(Confing.LOGIN_STATE){
+                                    Confing.islost=true;
+                                    mContext.startActivity(new Intent(mContext, IssueActivity.class));
+                                }else {
+                                    Toast.makeText(mContext, "请先进行登陆", Toast.LENGTH_SHORT).show();
+                                }
+
+
                                 break;
                             case 2:
-                                mContext.startActivity(new Intent(mContext, IssueActivity.class));
+                                if(Confing.LOGIN_STATE){
+                                    Confing.islost=false;
+                                    mContext.startActivity(new Intent(mContext, IssueActivity.class));
+                                }else {
+                                    Toast.makeText(mContext, "请先进行登陆", Toast.LENGTH_SHORT).show();
+                                }
+
+
                                 break;
                         }
 
