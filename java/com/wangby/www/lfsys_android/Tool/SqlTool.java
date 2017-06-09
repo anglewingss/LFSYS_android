@@ -134,6 +134,67 @@ public class SqlTool {
         return null;
     }
 
+    public List<Post> searchmyGood(int key){
+        String sql = "select * from lost where stuNum like '%"+key+"%'";
+
+         String  sql1 = "select * from found where stuNum like '%"+key+"%'";
+
+        List<Post> list = new ArrayList<Post>();
+        SQLiteDatabase db = sqlMode.getReadableDatabase();
+        Cursor c = db.rawQuery(sql,null);
+        Cursor c1 = db.rawQuery(sql,null);
+//        Cursor c = db.rawQuery("select * from lost where name like ? and age=?", new String[]{"%林计钦%", "4"});
+        if((c != null && c.getCount()>0)||(c1!=null&& c1.getCount()>0)){
+
+            while(c.moveToNext()){
+                Post d = new Post();
+                d.setType(c.getInt(0));
+                d.setId(c.getInt(1));
+                d.setGoodsName(c.getString(2));
+                d.setSubKindID(c.getInt(3));
+                d.setSubKindName(c.getString(4));
+                d.setPlace(c.getString(5));
+                d.setTime(c.getInt(6));
+                d.setDecp(c.getString(7));
+                d.setDatail(c.getString(8));
+                d.setStuNum(c.getInt(9));
+                d.setClash(c.getInt(10)==1);
+                d.setPublishTime(c.getInt(11));
+                d.setRemark(c.getString(12));
+                d.setPhoto(c.getString(13));
+                list.add(d);
+            }
+            while(c.moveToNext()){
+                Post d = new Post();
+                d.setType(c.getInt(0));
+                d.setId(c.getInt(1));
+                d.setGoodsName(c.getString(2));
+                d.setSubKindID(c.getInt(3));
+                d.setSubKindName(c.getString(4));
+                d.setPlace(c.getString(5));
+                d.setTime(c.getInt(6));
+                d.setDecp(c.getString(7));
+                d.setDatail(c.getString(8));
+                d.setStuNum(c.getInt(9));
+                d.setClash(c.getInt(10)==1);
+                d.setPublishTime(c.getInt(11));
+                d.setRemark(c.getString(12));
+                d.setPhoto(c.getString(13));
+                list.add(d);
+            }
+            c.close();
+            c1.close();
+            db.close();
+            return list;
+
+        }
+
+        c1.close();
+        db.close();
+        c.close();
+        return null;
+    }
+
     public List<Post> getGood(String type){
         String sql = "select * from "+type;
         List<Post> list = new ArrayList<Post>();
@@ -148,7 +209,7 @@ public class SqlTool {
                 d.setSubKindID(c.getInt(3));
                 d.setSubKindName(c.getString(4));
                 d.setPlace(c.getString(5));
-                d.setTime(c.getInt(6));
+                d.setTime(c.getLong(6));
                 d.setDecp(c.getString(7));
                 d.setDatail(c.getString(8));
                 d.setStuNum(c.getInt(9));

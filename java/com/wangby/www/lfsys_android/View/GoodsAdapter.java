@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.wangby.www.lfsys_android.R;
+import com.wangby.www.lfsys_android.Tool.DateTool;
 import com.wangby.www.lfsys_android.Tool.ImgTool;
 import com.wangby.www.lfsys_android.connect.Post;
 
@@ -53,7 +54,7 @@ public class GoodsAdapter extends BaseAdapter {
 		TextView textView1 = (TextView) view.findViewById(R.id.textView2);
 		Post dataMode = list.get(position);
 		textView1.setText(dataMode.getGoodsName());
-		textView.setText("地点："+dataMode.getPlace()+"\n时间："+dataMode.getTime()+"\n"+dataMode.getStuNum());
+		textView.setText("地点："+dataMode.getPlace()+"\n时间："+ DateTool.format(dataMode.getTime())+"\n");
 //		img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(), R.drawable.nullimg, null));
 //		img.setImageUrl(dataMode.getPhoto());
 

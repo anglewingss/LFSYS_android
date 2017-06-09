@@ -9,11 +9,11 @@
     </style>
 
 
-<style name="WhiteText">
-    <item name="android:textColor">@color/white</item>
-    <item name="android:textSize">15dp</item>
-    
-</style>
+    <style name="WhiteText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15dp</item>
+
+    </style>
 
 
     <style name="MyDialog" parent="@android:style/Theme.Dialog">
@@ -24,5 +24,21 @@
         <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
         <item name="android:backgroundDimEnabled">false</item><!--模糊-->
     </style>
+
+
+    <style name="PopupWindowAnimation">
+        <item name="android:windowEnterAnimation">@anim/popshow_anim</item>
+        <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>

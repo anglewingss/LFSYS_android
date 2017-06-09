@@ -3,99 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<LinearLayout
-    android:background="@drawable/splash_background"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="244dp">
-    <ImageView
-        android:id="@+id/personal_img"
-        android:onClick="imageview"
-        android:layout_gravity="center"
-        android:layout_width="128dp"
-        android:layout_height="123dp"
-        android:background="@drawable/personal_img"
-        android:layout_marginTop="20dp"/>
-
-
     <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/splash_background"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <TextView
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="信用值"/>
-            <TextView
-                android:textColor="@color/white"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="100"/>
-        </LinearLayout>
-        <View
-            android:layout_width="1.0px"
-            android:layout_height="50.0dip"
-            android:background="#ffffffff" />
-        <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <TextView
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="失物"/>
-            <TextView
-                android:textColor="@color/white"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="100"/>
-        </LinearLayout>
-        <View
-            android:layout_width="1.0px"
-            android:layout_height="50.0dip"
-            android:background="#ffffffff" />
-        <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <TextView
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="拾物"/>
-            <TextView
-                android:textColor="@color/white"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="100"/>
-        </LinearLayout>
+        android:layout_height="170dp">
+        <ImageView
+            android:id="@+id/personal_img"
+            android:onClick="imageview"
+            android:layout_gravity="center"
+            android:layout_width="128dp"
+            android:layout_height="123dp"
+            android:background="@drawable/personal_img"
+            android:layout_marginTop="20dp"/>
+
 
     </LinearLayout>
-
-</LinearLayout>
     <LinearLayout
         android:layout_below="@+id/top"
         android:id="@+id/ll_input_content"

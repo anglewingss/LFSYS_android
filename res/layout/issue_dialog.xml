@@ -34,6 +34,7 @@
         android:orientation="vertical"
         android:gravity="center">
         <TextView
+            android:onClick="tackpic"
             android:id="@+id/take_apictures"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
@@ -60,6 +61,7 @@
         android:orientation="vertical"
         android:gravity="center">
         <TextView
+            android:onClick="selectpic"
             android:id="@+id/select_photo"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
@@ -78,6 +80,7 @@
         android:background="#e1e1e1" />
 
     <Button
+        android:onClick="cancell"
         android:id="@+id/select_cancel"
         android:layout_width="fill_parent"
         android:layout_height="0dp"

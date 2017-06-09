@@ -15,6 +15,8 @@ public class Confing {
     static public Post goods  =null;
     static public MessageUse message =null;
     static public boolean islost = false;
+    static public int goodId = 0;
+    static public int SubKindID = 0;
 
 
 }

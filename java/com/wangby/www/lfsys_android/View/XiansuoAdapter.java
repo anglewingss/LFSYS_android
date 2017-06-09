@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.wangby.www.lfsys_android.R;
+import com.wangby.www.lfsys_android.Tool.DateTool;
 import com.wangby.www.lfsys_android.connect.Clue;
 
 import java.util.List;
@@ -53,7 +54,7 @@ public class XiansuoAdapter extends BaseAdapter {
         Clue clue = list.get(position);
         TextView textView1 = (TextView) view.findViewById(R.id.clue_time);
         TextView textView2 = (TextView) view.findViewById(R.id.clue_context);
-        textView1.setText("时间："+clue.getTime());
+        textView1.setText("时间："+ DateTool.format(clue.getTime()));
         textView2.setText("    "+clue.getContent());
 
         return view;

@@ -65,6 +65,7 @@ public class SplashActivity extends Activity {
                     sqlTool.saveGoods(list, "lost");
                 }
                 List<Post> listf=null;
+
                 listf = Function.showFound();
                 if(listf !=null) {
                     sqlTool.delect("Found");
@@ -77,6 +78,7 @@ public class SplashActivity extends Activity {
 
         enterHome();
     }
+
 
 
     private void enterHome() {

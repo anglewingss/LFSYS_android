@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.wangby.www.lfsys_android.Activity.GoodsActivity;
 import com.wangby.www.lfsys_android.Activity.IssueActivity;
 import com.wangby.www.lfsys_android.Activity.MessageActivity;
+import com.wangby.www.lfsys_android.Activity.MyGoodsActivity;
+import com.wangby.www.lfsys_android.Activity.PersonalActivity;
 import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.Object.MessageUse;
 import com.wangby.www.lfsys_android.R;
@@ -54,46 +56,53 @@ public class ContentFragment extends Fragment {
         inilistview();
         return contentView;
     }
+   public void goods_lost(){
+        goodslist = sqlTool.getGood("lost");
+        if(goodslist!=null){
+            listView.setAdapter(new GoodsAdapter(mContext, goodslist));
+            Toast.makeText(mContext, "有数据lost", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(mContext, "没有数据lost", Toast.LENGTH_SHORT).show();
+        }
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Confing.islost=true;
+                Confing.goods=goodslist.get(position);
+                mContext.startActivity(new Intent(mContext, GoodsActivity.class));
+            }
+        });
+    }
+
+    public void goods_found() {
+        goodslist = sqlTool.getGood("found");
+        if(goodslist!=null){
+            Toast.makeText(mContext, "有数据found", Toast.LENGTH_SHORT).show();
+            listView.setAdapter(new GoodsAdapter(mContext, goodslist));
+        }else {
+            Toast.makeText(mContext, "没有数据found", Toast.LENGTH_SHORT).show();
+        }
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Confing.islost=false;
+                Confing.goods=goodslist.get(position);
+                mContext.startActivity(new Intent(mContext, GoodsActivity.class));
+            }
+        });
+
+    }
     private void inilistview() {
         switch(type){
             case "goods_lost":
-                goodslist = sqlTool.getGood("lost");
-                if(goodslist!=null){
-                    listView.setAdapter(new GoodsAdapter(mContext, goodslist));
-                    Toast.makeText(mContext, "有数据lost", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(mContext, "没有数据lost", Toast.LENGTH_SHORT).show();
-                }
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                        Confing.goods=goodslist.get(position);
-                        mContext.startActivity(new Intent(mContext, GoodsActivity.class));
-                    }
-                });
+                goods_lost();
                 break;
             case "goods_found":
-                goodslist = sqlTool.getGood("found");
-                if(goodslist!=null){
-                    Toast.makeText(mContext, "有数据found", Toast.LENGTH_SHORT).show();
-                    listView.setAdapter(new GoodsAdapter(mContext, goodslist));
-                }else {
-                    Toast.makeText(mContext, "没有数据found", Toast.LENGTH_SHORT).show();
-                }
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                        Confing.goods=goodslist.get(position);
-                        mContext.startActivity(new Intent(mContext, GoodsActivity.class));
-                    }
-                });
+                goods_found();
                 break;
             case "issue":
                 listView.setAdapter(new IssueAdapter(mContext));
@@ -103,6 +112,12 @@ public class ContentFragment extends Fragment {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         switch (position){
                             case 0:
+                                if(Confing.LOGIN_STATE){
+                                    Confing.islost=true;
+                                    mContext.startActivity(new Intent(mContext, MyGoodsActivity.class));
+                                }else {
+                                    Toast.makeText(mContext, "请先进行登陆", Toast.LENGTH_SHORT).show();
+                                }
                                 break;
                             case 1:
                                 if(Confing.LOGIN_STATE){
@@ -159,19 +174,19 @@ public class ContentFragment extends Fragment {
 
         switch(type){
             case "goods_lost":
-//                Toast.makeText(mContext, "走了lost", Toast.LENGTH_SHORT).show();
                 goodslist = sqlTool.getGood("lost");
                 if(goodslist!=null){
                     listView.setAdapter(new GoodsAdapter(mContext, goodslist));
                 }
                 break;
             case "goods_found":
-//                Toast.makeText(mContext, "走了found", Toast.LENGTH_SHORT).show();
                 goodslist = sqlTool.getGood("found");
                 if(goodslist!=null){
                     listView.setAdapter(new GoodsAdapter(mContext, goodslist));
                 }
                 break;
+
+
         }
         super.onStop();
     }

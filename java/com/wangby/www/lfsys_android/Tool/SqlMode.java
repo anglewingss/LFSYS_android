@@ -30,8 +30,8 @@ public class SqlMode extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table user (stuNum integer,password varchar(20),name varchar(20),phone varchar(20),oredit integer);");
-        db.execSQL("create table lost(type integer,id integer,goodsName varchar(50),subKindID integer,subKindName varchar(50),place varchar(50),time integer,decp varchar(50),datail varchar(50),stuNum integer,isClash integer,publishTime integer,remark varchar(50),photo varchar(50));");
-        db.execSQL("create table found(type integer,id integer,goodsName varchar(50),subKindID integer,subKindName varchar(50),place varchar(50),time integer,decp varchar(50),datail varchar(50),stuNum integer,isClash integer,publishTime integer,remark varchar(50),photo varchar(50));");
+        db.execSQL("create table lost(type integer,id integer,goodsName varchar(50),subKindID integer,subKindName varchar(50),place varchar(50),time TimeStamp,decp varchar(50),datail varchar(50),stuNum integer,isClash integer,publishTime integer,remark varchar(50),photo varchar(50));");
+        db.execSQL("create table found(type integer,id integer,goodsName varchar(50),subKindID integer,subKindName varchar(50),place varchar(50),time TimeStamp,decp varchar(50),datail varchar(50),stuNum integer,isClash integer,publishTime integer,remark varchar(50),photo varchar(50));");
      }
 
     @Override

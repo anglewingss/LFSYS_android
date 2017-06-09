@@ -115,12 +115,17 @@
                 android:text="类 型"
                 android:textColor="#ff424242"
                 android:textSize="45px" />
-
-            <Spinner
-                android:id="@+id/spinner1"
-                android:layout_width="match_parent"
+            <com.wangby.www.lfsys_android.Activity.text.ExpandTabView
+                android:id="@+id/expandtab_view"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                />
+                android:text="hello_world" />
+
+            <!--<Spinner-->
+                <!--android:id="@+id/spinner1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
         </LinearLayout>
 
         <View
@@ -182,7 +187,11 @@
                 android:textColor="#ff424242"
                 android:textSize="45px" />
 
-            <EditText
+            <TextView
+                android:gravity="center_vertical"
+                android:text="选择时间"
+                android:textColor="#000"
+                android:drawableRight="@drawable/back_right_f"
                 android:id="@+id/issue_time"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"

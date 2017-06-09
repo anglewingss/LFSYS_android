@@ -5,27 +5,28 @@ import org.json.JSONObject;
 
 
 /*
- * ���졢ʧ����Ϣ��
+ * 招领、失物信息类
  */
 public class Post {
-	private int type;				//ʧ��/ʰ��
-	private long id;				//��Ʒ���
-	private String goodsName;		//��Ʒ����
-	private int subKindID;			//����ID
-	private String subKindName;		//��������
-	private String place;			//�ص�
-	private long time;				//ʱ��
-	private String decp;			//����
-	private String datail;			//��ϸ��Ϣ
-	private int stuNum;				//������ѧ��
-	private boolean isClash;		//�Ƿ��ֽ�
-	private long publishTime; 		//����ʱ��
-	private String remark;			//��ע
-	private String photo;			//ͼƬ·��
-	
+	private int type;				//失物/拾物
+	private long id;				//物品编号
+	private String goodsName;		//物品名称
+	private int subKindID;			//子类ID
+	private String subKindName;		//子类名称
+	private String place;			//地点
+	private long time;				//时间
+	private String decp;			//特征
+	private String datail;			//详细信息
+	private int stuNum;				//发布者学号
+	private boolean isClash;		//是否现金
+	private long publishTime; 		//发布时间
+	private String remark;			//备注
+	private String status;			//认领状态
+	private String photo;			//图片路径
+
 	public Post(){
 	}
-	
+
 	public Post(String jsonString){
 		JSONObject json = null;
 		try {
@@ -45,11 +46,12 @@ public class Post {
 		this.publishTime = json.getLong("publishTime");
 		this.remark = json.getString("remark");
 		this.photo = json.getString("photo");
+		this.status = json.getString("status");
 		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		e.printStackTrace();
 	}
-	
+	}
+
 	public Post(JSONObject jsonObject){
 		try {
 			this.type = jsonObject.getInt("type");
@@ -67,18 +69,19 @@ public class Post {
 		this.publishTime = jsonObject.getLong("publishTime");
 		this.remark = jsonObject.getString("remark");
 		this.photo = jsonObject.getString("photo");
+		this.status = jsonObject.getString("status");
 		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		e.printStackTrace();
 	}
-	
+	}
+
 	@Override
 	public String toString() {
 		JSONObject json = new JSONObject();
-		try {
-			json.put("type", this.type);
+		try {json.put("type", this.type);
 
-		json.put("id", this.id);
+			json.put("id", this.id);
+
 		json.put("goodsName", this.goodsName);
 		json.put("subKindID", this.subKindID);
 		json.put("subKindName", this.subKindName);
@@ -91,16 +94,16 @@ public class Post {
 		json.put("publishTime", this.publishTime);
 		json.put("remark", this.remark);
 		json.put("photo",this.photo);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		json.put("status", this.status);	} catch (JSONException e) {
+		e.printStackTrace();
+	}
 		return json.toString();
 	}
-	
-	
-/*
- * get/set����
- */	
+
+
+	/*
+     * get/set方法
+     */
 	public int getType() {
 		return type;
 	}
@@ -147,6 +150,17 @@ public class Post {
 	public void setTime(long time) {
 		this.time = time;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		if(status==null){
+			this.status = "待认领";
+		}else{
+			this.status = status;
+		}
+	}
+
 	public String getDecp() {
 		return decp;
 	}
@@ -157,6 +171,7 @@ public class Post {
 			this.decp = decp;
 		}
 	}
+
 	public String getDatail() {
 		return datail;
 	}
@@ -205,7 +220,7 @@ public class Post {
 			this.photo = photo;
 		}
 	}
-	
+
 	{
 		this.id = 0;
 		this.goodsName = "";
@@ -216,5 +231,6 @@ public class Post {
 		this.isClash = false;
 		this.remark = "";
 		this.photo = "";
+		this.status = "";
 	}
 }

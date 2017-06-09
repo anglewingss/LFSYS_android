@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">LFSYS_android</string>
     <string name="app">LFSYS</string>
+    <string name="menu_settings">Settings</string>
+    <string name="no_data">没有找到符合条件的房源</string>
+    <string name="title_activity_my_goods">MyGoodsActivity</string>
 </resources>

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.R;
+import com.wangby.www.lfsys_android.Tool.DateTool;
 import com.wangby.www.lfsys_android.View.XiansuoAdapter;
 import com.wangby.www.lfsys_android.connect.Clue;
 import com.wangby.www.lfsys_android.connect.Function;
@@ -24,6 +25,9 @@ import java.util.List;
 public class GoodsActivity extends Activity {
 
     ImageView img;
+    TextView t;
+    TextView cc;
+    TextView ct;
     TextView name;
     TextView place;
     TextView time;
@@ -34,9 +38,12 @@ public class GoodsActivity extends Activity {
     Context mContext;
     Post goods;
     List<Clue> list;
+
     Handler handler = new Handler() {
         public void handleMessage(Message msg) {
-            goodslist.setAdapter(new XiansuoAdapter(mContext,list));
+            if(goods.getStuNum()==Confing.user.getStuNum()){
+                goodslist.setAdapter(new XiansuoAdapter(mContext,list));
+            }
             super.handleMessage(msg);}
     };
 
@@ -52,7 +59,7 @@ public class GoodsActivity extends Activity {
     private void set() {
         name.setText(goods.getGoodsName());
         place.setText(goods.getPlace());
-        time.setText(goods.getTime()+"");
+        time.setText(DateTool.format(goods.getTime()));
         decp.setText(goods.getDecp());
         datail.setText(goods.getDatail());
         remark.setText(goods.getRemark());
@@ -69,6 +76,17 @@ public class GoodsActivity extends Activity {
     }
 
     private void ini() {
+        t= (TextView) findViewById(R.id.times);
+        ct= (TextView) findViewById(R.id.xiansuo_text);
+        cc = (TextView) findViewById(R.id.cc);
+        if(Confing.islost){
+            cc.setVisibility(View.VISIBLE);
+            ct.setVisibility(View.VISIBLE);
+        }else{
+            cc.setVisibility(View.GONE);
+            ct.setVisibility(View.GONE);
+            t.setText("拾物时间");
+        }
         goodslist = (ListView) findViewById(R.id.good_list_xiansuo);
         img = (ImageView) findViewById(R.id.goods_img);
         name = (TextView) findViewById(R.id.goods_name);

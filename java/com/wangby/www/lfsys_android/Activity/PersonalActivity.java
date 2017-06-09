@@ -32,7 +32,7 @@ public class PersonalActivity extends Activity {
   }
 
     private void conent() {
-        User u = user = Confing.user;
+        User u = Confing.user;
         name.setText(" "+u.getName());
         num.setText(" "+u.getStuNum());
         phone.setText(" "+u.getPhone());

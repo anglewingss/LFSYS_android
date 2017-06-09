@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.wangby.www.lfsys_android.Object.Confing;
 import com.wangby.www.lfsys_android.R;
@@ -63,6 +64,10 @@ public class SearchActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.search_button:
                 final List<Post> goodslist = sqlTool.searchGood(searchStr.getText().toString());
+                if(goodslist==null){
+                    Toast.makeText(mContext, "没有找到", Toast.LENGTH_SHORT).show();
+                    break;
+                }
                 listView.setAdapter(new GoodsAdapter(mContext, goodslist));
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 

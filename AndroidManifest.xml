@@ -28,7 +28,12 @@
         <activity android:name=".Activity.IssueActivity" />
         <activity android:name=".Activity.GoodsActivity" />
         <activity android:name=".Activity.MessageActivity" />
-        <activity android:name=".Activity.ClueActivity"></activity>
+        <activity android:name=".Activity.ClueActivity" />
+        <activity android:name=".Activity.textActivity" />
+        <activity
+            android:name=".Activity.MyGoodsActivity"
+            android:label="@string/title_activity_my_goods"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
