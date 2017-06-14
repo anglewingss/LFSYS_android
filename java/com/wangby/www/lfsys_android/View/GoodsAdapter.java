@@ -52,9 +52,12 @@ public class GoodsAdapter extends BaseAdapter {
 		ImgTool img = (ImgTool) view.findViewById(R.id.imageView);
 		TextView textView = (TextView) view.findViewById(R.id.textView);
 		TextView textView1 = (TextView) view.findViewById(R.id.textView2);
+		TextView textView3 = (TextView) view.findViewById(R.id.type);
+
 		Post dataMode = list.get(position);
 		textView1.setText(dataMode.getGoodsName());
 		textView.setText("地点："+dataMode.getPlace()+"\n时间："+ DateTool.format(dataMode.getTime())+"\n");
+		textView3.setText(dataMode.getStatus());
 //		img.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(), R.drawable.nullimg, null));
 //		img.setImageUrl(dataMode.getPhoto());
 
